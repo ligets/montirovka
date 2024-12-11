@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "Russo One";
+    src: url(/public/fonts/RussoOne-Regular.ttf);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: "Russo One", serifserif;
+}
+
+main{
+    color: #4E76C6;
+    font-family: "Russo One", serif;
+}
+
+.logo{
+    font-size: 30px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+}
+.enter{
+    gap: 10px;
+}
+.nav{
+    display: flex;
+    color: #4E76C6;
+    gap: 20px;
+    font-family: "Russo One", serif;
+}
+.cherta{
+    background-color:  #ECEAE7;
+    height: 2px;
+    width: 100%;
+}
+.btn{
+    background-color: #4E76C6;
+    color: #ffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn:hover {
+    background-color: #2f5bb4;
+}
+.ulik{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 5%
+}
+ul{
+    list-style-type: inherit;
+}
+.ul-1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 0 5%;
+}
+.circle{
+    color: black;
+    font-size: 30px;
+}
+.photo_about{
+    width: 50%;
+    height: 600px;
+    object-fit: cover;
+}
+.photo-1{
+    justify-content: space-between;
+    width: 100%;
+}
+.ulik-2{
+    margin: 0 5% 0 5%;
+}
+
+
