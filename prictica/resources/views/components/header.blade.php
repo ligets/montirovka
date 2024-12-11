@@ -1,3 +1,4 @@
+@vite(['resources/css/app.css'])
 <header>
     <div class="flex header">
         <a href="{{ route("about") }}" class="logo">Mollen</a>

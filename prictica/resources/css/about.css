@@ -147,7 +147,7 @@ header h1 {
     color: #333;
 }
 .product-card button {
-    background-color: #007bff;
+    background-color: #4E76C6;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -156,7 +156,7 @@ header h1 {
     transition: background-color 0.3s;
 }
 .product-card button:hover {
-    background-color: #0056b3;
+    background-color: #2f5bb4;
 }
 .filters .filter-group {
     margin-bottom: 20px;

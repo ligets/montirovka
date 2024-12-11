@@ -10,16 +10,21 @@
 <x-header/>
 <main class="flex">
     <div id="yandexmap" style="width: 40%; height: 700px; margin-left: 50px; display: flex;"></div>
-    <div class="info_cont">
+    <div class="info_cont text-[20px]">
         <div>
-            <h2 class="address">Адрес</h2>
+            <h2 class="address">Адрес:</h2>
             <span>Город Ижевск, улица 10 лет Октября, 32</span>
         </div>
         <div>
-            <h2 class="address">Контакты для связи</h2>
+            <h2 class="address">Контакты для связи:</h2>
             <span>Email: example@domain.com</span>
             <span>Telegram: @example</span>
-            <span>Номер телефона: +7 (999) 999-99-99</span>
+            <span class="mb-[20px]">Номер телефона: +7 (999) 999-99-99</span>
+            <p>Часы работы:</p>
+            <ul>
+            <li>Пн-Пт: 09:00 - 21:00</li>
+            <li>Сб-Вс: 10:00 - 20:00</li>
+            </ul>
         </div>
     </div>
 </main>
@@ -56,5 +61,9 @@
         cart.classList.toggle('open');
     }
 </script>
+<footer>
+
+<x-footer/>
+</footer>
 </body>
 </html>

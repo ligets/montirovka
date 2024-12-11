@@ -51,35 +51,35 @@
                 <h3>Название товара</h3>
                 <p>Описание товара</p>
                 <div class="price">15 000 ₽</div>
-                <button>В корзину</button>
+                <button class="apply-button">В корзину</button>
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/250" alt="Название товара">
                 <h3>Название товара</h3>
                 <p>Описание товара</p>
                 <div class="price">12 000 ₽</div>
-                <button>В корзину</button>
+                <button class="apply-button">В корзину</button>
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/250" alt="Название товара">
                 <h3>Название товара</h3>
                 <p>Описание товара</p>
                 <div class="price">12 000 ₽</div>
-                <button>В корзину</button>
+                <button class="apply-button">В корзину</button>
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/250" alt="Название товара">
                 <h3>Название товара</h3>
                 <p>Описание товара</p>
                 <div class="price">12 000 ₽</div>
-                <button>В корзину</button>
+                <button class="apply-button">В корзину</button>
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/250" alt="Название товара">
                 <h3>Название товара</h3>
                 <p>Описание товара</p>
                 <div class="price">10 000 ₽</div>
-                <button>В корзину</button>
+                <button class="apply-button">В корзину</button>
             </div>
         </section>
     </div>
@@ -91,5 +91,8 @@
         cart.classList.toggle('open');
     }
 </script>
+<footer>
+<x-footer/>
+</footer>
 </body>
 </html>
