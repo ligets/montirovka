@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     public function index() {
         $orders = Order::where('user_id', auth()->id())->orderBy('updated_at', 'desc')->get();
-        return view("", compact('orders'));
+        return view("order.main", compact('orders'));
     }
 
     public function store(Request $request) {
@@ -56,7 +56,7 @@ class OrderController extends Controller
         else {
             abort(400);
         }
-        return redirect()->route('profile.orders');
+        return redirect()->route('orders');
     }
 
     public function show(int $id) {
@@ -64,7 +64,12 @@ class OrderController extends Controller
         if ($order->user_id != auth()->id() && auth()->user()->role->name != 'admin') {
             abort(403);
         }
-        return view("", compact('order'));
+        return view("order.id", compact('order'));
+    }
+
+    public function indexAdmin() {
+        $orders = Order::where("status_id", Status::where('name', 'Ожидает подтверждения')->first()->id)->get();
+        return view("order.admin", compact('orders'));
     }
 
     public function destroy(int $id) {

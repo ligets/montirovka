@@ -8,20 +8,29 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $request->validate([
             'search' => 'nullable|string',
-            'brand' => 'nullable|integer|min:1'
+            'brand' => 'nullable|integer|min:1',
+            'category_id' => 'nullable|integer|min:1|exists:categories,id', // Валидация для category_id
         ]);
+
         $products = Product::query()
             ->when($request->search, function ($query) use ($request) {
                 $query->where('title', 'like', "%{$request->search}%")
                     ->orWhereHas('brand', function ($q) use ($request) {
                         $q->where('name', 'like', "%{$request->search}%");
                     });
-            })->when($request->brand, function ($query) use ($request) {
+            })
+            ->when($request->brand, function ($query) use ($request) {
                 $query->where('brand_id', $request->brand);
-            })->get();
+            })
+            ->when($request->category_id, function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })
+            ->get();
+
         return view('home', compact('products'));
     }
 

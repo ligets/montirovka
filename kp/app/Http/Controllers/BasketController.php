@@ -11,14 +11,14 @@ class BasketController extends Controller
     public function index() {
         $items = Basket::where('user_id', auth()->id())
             ->with("product")->get();
-        return view("", compact('items'));
+        return view("basket.main", compact('items'));
     }
 
     public function create(int $product_id) {
         $product = Product::find($product_id);
 
         if (!$product) {
-            return redirect()->route('home')->with('error', 'Книга не найдена.');
+            return redirect()->route('home')->with('error', 'Товар не найдена.');
         }
 
         // Проверка наличия книги в корзине для текущего пользователя
@@ -39,11 +39,11 @@ class BasketController extends Controller
         }
 
         // Возвращаем пользователя на главную страницу с сообщением об успешном добавлении
-        return redirect()->route('home')->with('success', 'Книга добавлена в корзину.');
+        return redirect()->route('home')->with('success', 'Товар добавлен в корзину.');
     }
 
     public function destroy(int $id) {
         Basket::findOrFail($id)->delete();
-        return redirect()->route("");
+        return redirect()->route("basket");
     }
 }
