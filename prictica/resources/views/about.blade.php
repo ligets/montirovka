@@ -7,61 +7,7 @@
     @vite(['resources/css/about.css', 'resources/css/style.css'])
 </head>
 <body>
-<header>
-    <div class="flex header">
-        <a href="{{ route("about") }}" class="logo">Mollen</a>
-        <div class="nav">
-            <a href="{{ route("about") }}">
-                О нас
-            </a>
-            <a href="{{ route("catalog") }}">
-                Каталог
-            </a>
-            <a href="{{ route("where") }}">
-                Где нас найти
-            </a>
-        </div>
-
-        <div class="flex enter">
-            <button class="cart-button" onclick="toggleCart()">Корзина</button>
-            <a href="{{ route("login") }}" class="btn">
-                Вход
-            </a>
-            <a href="{{ route("register") }}" class="btn">
-                Регистрация
-            </a>
-        </div>
-
-        <div id="cart" class="cart">
-            <div class="cart-header">
-                <h2>Корзина</h2>
-                <button class="cart-close" onclick="toggleCart()">&times;</button>
-            </div>
-            <ul class="cart-items">
-                <li class="cart-item">
-                    <img src="https://via.placeholder.com/50" alt="Товар">
-                    <div class="cart-item-info">
-                        <h4>Товар 1</h4>
-                        <p>Цена: 15 000 ₽</p>
-                    </div>
-                    <button class="cart-item-remove">Удалить</button>
-                </li>
-                <li class="cart-item">
-                    <img src="https://via.placeholder.com/50" alt="Товар">
-                    <div class="cart-item-info">
-                        <h4>Товар 2</h4>
-                        <p>Цена: 12 000 ₽</p>
-                    </div>
-                    <button class="cart-item-remove">Удалить</button>
-                </li>
-            </ul>
-            <div class="cart-total">Итого: 27 000 ₽</div>
-        </div>
-    </div>
-    <div class="cherta">
-
-    </div>
-</header>
+<x-header />
 <main class="main">
     <div class="flex photo-1">
         <div class="ulik">
@@ -79,8 +25,6 @@
         <img class="photo_about" src="/media/images/199b91c7a5d29028a6e2e25ea9da47cd.jpg" alt="self-1">
     </div>
     <div class="flex photo-1">
-
-        <div id="yandexmap" style="width: 80%; height: 700px;margin-left: 50px; display: flex;"></div>
         <div class="ulik-2">
             <p class="circle">Наши принципы</p>
             <ul class="ul-1">
@@ -118,32 +62,6 @@
 
 </footer>
 </body>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script>
-    let map;
-
-    function initMap() {
-        map = new ymaps.Map("yandexmap", {
-            center: [56.871633, 53.227287],
-            zoom: 16
-        });
-        const marker = new ymaps.Placemark(
-            [56.871633, 53.227287], // Координаты маркера
-            {
-                hintContent: 'Центральная точка', // Подсказка при наведении
-                balloonContent: 'Это точка, на которую карта отцентрирована' // Содержимое балуна
-            }
-        );
-
-        // Добавление маркера на карту
-        map.geoObjects.add(marker);
-        window.addEventListener("resize", () => {
-            map.container.fitToViewport();
-        });
-    }
-
-    ymaps.ready(initMap);
-</script>
 <script>
     // Функция для открытия/закрытия корзины
     function toggleCart() {
