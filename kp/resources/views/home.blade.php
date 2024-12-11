@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="hero-section bg-cover bg-center h-96 flex items-center justify-center text-white">
-    <h1 class="text-4xl font-bold">Всё для вашего спорта!</h1>
-    <a href="{{ route('catalog') }}" class="btn btn-primary mt-4">Смотреть каталог</a>
-</div>
+<header>
+    <x-header/>
+</header>
 
 <div class="categories-section py-10 bg-gray-100">
     <h2 class="text-center text-3xl font-semibold">Популярные категории</h2>
     <div class="grid grid-cols-4 gap-6 container mx-auto mt-6">
         @foreach($categories as $category)
             <div class="category-card bg-white p-4 text-center rounded shadow">
-                <img src="{{ $category->image }}" alt="{{ $category->name }}" class="h-20 mx-auto">
                 <h3 class="text-lg mt-4">{{ $category->name }}</h3>
             </div>
         @endforeach
