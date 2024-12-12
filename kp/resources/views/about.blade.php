@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-header />
     <div class="bg-gray-100 py-10">
         <div class="container mx-auto px-4">
             <!-- Заголовок -->

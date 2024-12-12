@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-header />
     <div class="bg-gray-100 py-10">
         <div class="container mx-auto px-4">
             <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Где нас найти</h1>

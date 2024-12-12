@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Редактирование профиля')
 @section('content')
-@include("components.snd-header")
+    @include("components.snd-header")
     <div class="py-12">
         <div class="flex w-[70%] mx-auto gap-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg flex">

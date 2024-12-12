@@ -61,7 +61,7 @@ class OrderController extends Controller
     }
 
     public function show(int $id) {
-        $order = Order::with("books")->findOrFail($id);
+        $order = Order::with("products")->findOrFail($id);
         if ($order->user_id != auth()->id() && auth()->user()->role->name != 'admin') {
             abort(403);
         }

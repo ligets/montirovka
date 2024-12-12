@@ -39,9 +39,6 @@
         @endforeach
     </div>
 </div>
-<footer>
-    <x-footer/>
-</footer>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const showMoreButton = document.getElementById("show-more");

@@ -1,16 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-header/>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include("components.snd-header")
     <div class="bg-gray-100 py-10">
         <div class="container mx-auto px-4">
             <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Создать новый товар</h1>

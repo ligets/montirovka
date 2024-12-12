@@ -29,10 +29,10 @@ Route::get("/products/{id}/edit", function () {
 })->name("products.edit")->middleware(['auth', 'role:admin']);
 
 Route::get("/orders", "App\Http\Controllers\OrderController@index")->name("orders")->middleware('auth');
-Route::get("/orders/{id}", "App\Http\Controllers\OrderController@index")->name("orders.id")->middleware('auth');
 Route::get("/orders/admin", "App\Http\Controllers\OrderController@indexAdmin")->name("orders.admin")->middleware('auth');
+Route::get("/orders/{id}", "App\Http\Controllers\OrderController@show")->name("orders.id")->middleware('auth');
 Route::post("/orders", "App\Http\Controllers\OrderController@store")->name("order.store")->middleware('auth');
-Route::delete("/orders", "App\Http\Controllers\OrderController@destroy")->name("order.destroy")->middleware('auth');
+Route::delete("/orders/{id}", "App\Http\Controllers\OrderController@destroy")->name("order.destroy")->middleware('auth');
 Route::post("/orders/{id}", "App\Http\Controllers\OrderController@confirm")->name("order.confirm")->middleware(['auth', 'role:admin']);
 
 Route::get("/basket", "App\Http\Controllers\BasketController@index")->name('basket')->middleware('auth');
