@@ -19,16 +19,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get("/products/create", "App\Http\Controllers\ProductController@create")->name("products.create")->middleware(['auth', 'role:admin']);
+Route::patch("/product/{id}", "App\Http\Controllers\ProductController@update")->name("products.update")->middleware(['auth', 'role:admin']);
+Route::post("/products", "App\Http\Controllers\ProductController@store")->name("products.store")->middleware(['auth', 'role:admin']);
+Route::delete("/products/{id}", "App\Http\Controllers\ProductController@destroy")->name("products.destroy")->middleware(['auth', 'role:admin']);
 Route::get("/products/{id}", "App\Http\Controllers\ProductController@show")->name("products.id");
 Route::get("/products/{id}/edit", function () {
     return view('catalog.edit');
 })->name("products.edit")->middleware(['auth', 'role:admin']);
-Route::get("/products/create", function () {
-    return view('catalog.create');
-})->name("products.create")->middleware(['auth', 'role:admin']);
-Route::patch("/product/{id}", "App\Http\Controllers\ProductController@update")->name("products.update")->middleware(['auth', 'role:admin']);
-Route::post("/products", "App\Http\Controllers\ProductController@store")->name("products.store")->middleware(['auth', 'role:admin']);
-Route::delete("/products/{id}", "App\Http\Controllers\ProductController@destroy")->name("products.destroy")->middleware(['auth', 'role:admin']);
 
 Route::get("/orders", "App\Http\Controllers\OrderController@index")->name("orders")->middleware('auth');
 Route::get("/orders/{id}", "App\Http\Controllers\OrderController@index")->name("orders.id")->middleware('auth');

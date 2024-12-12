@@ -1,17 +1,58 @@
 @extends('layouts.app')
 
 @section('content')
-<header>
-    <x-header/>
-</header>
-<div class="about-section py-10 bg-gray-100">
-    <div class="container mx-auto">
-        <h1 class="text-4xl font-bold text-center">О нас</h1>
-        <p class="mt-6 text-lg text-gray-700 leading-relaxed">
-            Мы – команда, которая стремится сделать спорт доступным и приятным для каждого. Наша миссия – 
-            предложить качественные спортивные товары, которые помогут вам достичь ваших целей.
-        </p>
-        <img src="/images/about_us.jpg" alt="Наша команда" class="w-full mt-6 rounded shadow">
+    <x-header />
+    <div class="bg-gray-100 py-10">
+        <div class="container mx-auto px-4">
+            <!-- Заголовок -->
+            <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">О нас</h1>
+
+            <!-- Блок с описанием -->
+            <div class="bg-white p-6 rounded shadow mb-8">
+                <p class="text-gray-600 leading-relaxed">
+                    Добро пожаловать в наш магазин спортивных товаров! Мы специализируемся на предоставлении качественного оборудования и аксессуаров для всех видов спорта.
+                    Наша миссия — вдохновлять людей на активный образ жизни, предлагая лучшие продукты, которые помогут вам достигать новых высот.
+                </p>
+            </div>
+
+            <!-- Наша история -->
+            <div class="bg-white p-6 rounded shadow mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Наша история</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Мы начали свой путь в 2010 году как небольшой магазин, обслуживающий местное сообщество.
+                    С тех пор мы выросли до крупного розничного и онлайн-магазина, сотрудничая с ведущими брендами в мире спорта.
+                    Наш успех основан на вашем доверии и нашей преданности делу.
+                </p>
+            </div>
+
+            <!-- Наша команда -->
+            <div class="bg-white p-6 rounded shadow mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Наша команда</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    В нашем коллективе работают профессионалы, которые увлечены спортом и стремятся помочь каждому клиенту найти то, что ему нужно.
+                    Мы всегда готовы поделиться своими знаниями и опытом, чтобы ваши тренировки стали эффективнее и приятнее.
+                </p>
+            </div>
+
+            <!-- Наши ценности -->
+            <div class="bg-white p-6 rounded shadow mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Наши ценности</h2>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Качество продукции и обслуживания.</li>
+                    <li>Честность и прозрачность в отношениях с клиентами.</li>
+                    <li>Поддержка здорового и активного образа жизни.</li>
+                </ul>
+            </div>
+
+            <!-- Почему выбирают нас -->
+            <div class="bg-white p-6 rounded shadow">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Почему выбирают нас?</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Мы гордимся тем, что предоставляем широкий ассортимент спортивных товаров для профессионалов и любителей.
+                    У нас вы найдете современные тренажеры, экипировку и аксессуары от лучших производителей.
+                    Мы всегда стремимся превзойти ожидания наших клиентов.
+                </p>
+            </div>
+        </div>
     </div>
-</div>
 @endsection

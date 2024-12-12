@@ -5,15 +5,18 @@
     <x-header/>
 </header>
 
-<div class="categories-section py-10 bg-gray-100">
+<div class="categories-section py-10 bg-gray-100 flex flex-col items-center">
     <h2 class="text-center text-3xl font-semibold">Популярные категории</h2>
-    <div class="grid grid-cols-4 gap-6 container mx-auto mt-6">
-        @foreach($categories as $category)
-            <div class="category-card bg-white p-4 text-center rounded shadow">
-                <h3 class="text-lg mt-4">{{ $category->name }}</h3>
-            </div>
+    <div class="grid grid-cols-4 gap-6 container mx-auto mt-6" id="category-container">
+        @foreach($categories as $index => $category)
+            <a href="{{ route('home', ["category_id" => $category->id]) }}" class="category-card h-[80px] bg-white flex items-center justify-center p-4 text-center rounded shadow {{ $index >= 4 ? 'hidden' : '' }}">
+                <h3 class="text-lg">{{ $category->name }}</h3>
+            </a>
         @endforeach
     </div>
+    @if(count($categories) > 4)
+        <button id="show-more" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Показать все</button>
+    @endif
 </div>
 
 <div class="products-section py-10">
@@ -29,4 +32,17 @@
         @endforeach
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const showMoreButton = document.getElementById("show-more");
+        const hiddenCategories = document.querySelectorAll("#category-container .hidden");
+
+        if (showMoreButton) {
+            showMoreButton.addEventListener("click", () => {
+                hiddenCategories.forEach(category => category.classList.remove("hidden"));
+                showMoreButton.style.display = "none"; // Скрыть кнопку после показа всех категорий
+            });
+        }
+    });
+</script>
 @endsection

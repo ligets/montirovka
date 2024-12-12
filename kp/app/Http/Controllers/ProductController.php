@@ -29,7 +29,7 @@ class ProductController extends Controller
             })
             ->when($request->category_id, function ($query) use ($request) {
                 $query->where('category_id', $request->category_id);
-            })
+            })->orderBy("updated_at", "desc")
             ->get();
         $categories = Category::all();
         return view('home', compact('products', 'categories'));
@@ -125,5 +125,9 @@ class ProductController extends Controller
     public function show(int $id) {
         $product = Product::findOrFail($id);
         return view("", compact("product"));
+    }
+    public function create() {
+        $categories = Category::all();
+        return view("catalog.create", compact("categories"));
     }
 }
