@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<header>
-    <x-header/>
-</header>
 
 <div class="categories-section py-10 bg-gray-100 flex flex-col items-center">
     <h2 class="text-center text-3xl font-semibold">Категории</h2>
@@ -42,6 +39,9 @@
         @endforeach
     </div>
 </div>
+<footer>
+    <x-footer/>
+</footer>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const showMoreButton = document.getElementById("show-more");
