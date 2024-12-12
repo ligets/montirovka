@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="categories-section py-10 bg-gray-100 flex flex-col items-center">
-    <h2 class="text-center text-3xl font-semibold">Популярные категории</h2>
+    <h2 class="text-center text-3xl font-semibold">Категории</h2>
     <div class="grid grid-cols-4 gap-6 container mx-auto mt-6" id="category-container">
         @foreach($categories as $index => $category)
             <a href="{{ route('home', ["category_id" => $category->id]) }}" class="category-card h-[80px] bg-white flex items-center justify-center p-4 text-center rounded shadow {{ $index >= 4 ? 'hidden' : '' }}">
@@ -17,7 +17,7 @@
 </div>
 
 <div class="products-section py-10">
-    <h2 class="text-center text-3xl font-semibold">Рекомендуемые товары</h2>
+    <h2 class="text-center text-3xl font-semibold">Последние товары</h2>
     <div class="grid grid-cols-4 gap-4 container mx-auto mt-6">
         @foreach($products as $product)
             <a href="{{ route('products.id', ['id' => $product->id]) }}" class="w-[350px] mx-auto bg-white border border-gray-200 rounded-lg shadow-md flex flex-col overflow-hidden">
@@ -39,9 +39,6 @@
         @endforeach
     </div>
 </div>
-<footer>
-    <x-footer/>
-</footer>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const showMoreButton = document.getElementById("show-more");
