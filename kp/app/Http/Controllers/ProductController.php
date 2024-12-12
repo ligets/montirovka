@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use function Pest\Laravel\json;
 
 class ProductController extends Controller
 {
@@ -42,28 +43,26 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'brand' => 'required|string',
             'category_id' => 'required|integer|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
-        $brand = Brand::firstOrCreate(
-            ['name' => $request->brand], // Условие поиска
-        );
-
-        $product_arr = [
+        $brand = Brand::where('name', $request->brand)->first();
+        if ($brand == null) {
+            $brand = Brand::create([
+                'name' => $request->brand
+            ]);
+        }
+        $filePath = $request->file('image')->store('images', 'public'); // Исправлено
+        $product = Product::create([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
             'brand_id' => $brand->id, // Устанавливаем brand_id
-            'category_id' => $request->category_id
-        ];
-
-        if ($request->hasFile('img_path')) {
-            $filePath = $request->file('img_path')->store('img_paths', 'public');
-            $product_arr['img_path'] = $filePath;
-        }
-        $product = Product::create($product_arr);
+            'category_id' => $request->category_id,
+            'image' => $filePath,
+        ]);
 
 
-        return redirect()->route('products.id', compact('product'))->with('success', 'Продукт успешно создан.');
+        return redirect()->route('products.id', $product->id)->with('success', 'Продукт успешно создан.');
     }
 
     public function destroy(int $id)
@@ -124,7 +123,7 @@ class ProductController extends Controller
 
     public function show(int $id) {
         $product = Product::findOrFail($id);
-        return view("", compact("product"));
+        return view("catalog.id", compact("product"));
     }
     public function create() {
         $categories = Category::all();

@@ -2,28 +2,37 @@
 
 @section('content')
     <x-header/>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="bg-gray-100 py-10">
         <div class="container mx-auto px-4">
             <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Создать новый товар</h1>
 
             <!-- Форма создания товара -->
             <div class="bg-white p-8 rounded shadow">
-                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="/products" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Название товара -->
                     <div class="mb-6">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Название товара</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700">Название товара</label>
                         <input
                             type="text"
-                            name="name"
-                            id="name"
+                            name="title"
+                            id="title"
                             class="mt-1 w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Введите название товара"
-                            value="{{ old('name') }}"
+                            value="{{ old('title') }}"
                             required
                         >
-                        @error('name')
+                        @error('title')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -57,6 +66,23 @@
                             required
                         >
                         @error('price')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Брэнд товара -->
+                    <div class="mb-6">
+                        <label for="brand" class="block text-sm font-medium text-gray-700">Брэнд товара</label>
+                        <input
+                            type="text"
+                            name="brand"
+                            id="brand"
+                            class="mt-1 w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Введите брэнд товара"
+                            value="{{ old('brand') }}"
+                            required
+                        >
+                        @error('brand')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
