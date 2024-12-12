@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Basket;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Status;
@@ -21,14 +22,14 @@ class OrderController extends Controller
             'quantity' => 'integer|min:0'
         ]);
         if ($request->type == 'basket') {
-            $basketSummary = Product::where('user_id', auth()->id())
-                ->with('book')
+            $basketSummary = Basket::where('user_id', auth()->id())
+                ->with('product')
                 ->get()
                 ->map(function ($basket) {
                     return [
-                        'book_id' => $basket->book_id,
+                        'product_id' => $basket->product->id,
                         'quantity' => $basket->quantity,
-                        'total_price' => $basket->quantity * $basket->book->price,
+                        'total_price' => $basket->quantity * $basket->product->price,
                     ];
                 });
             $totalPrice = $basketSummary->sum('total_price');
@@ -38,13 +39,13 @@ class OrderController extends Controller
                 'status_id' => Status::where('name', 'Ожидает подтверждения')->first()->id
             ]);
             foreach ($basketSummary as $item) {
-                $order->books()->attach([
-                    $item['book_id'] => ['quantity' => $item['quantity']]
+                $order->products()->attach([
+                    $item['product_id'] => ['quantity' => $item['quantity']]
                 ]);
             }
-            Product::where("user_id", auth()->id())->delete();
+            Basket::where("user_id", auth()->id())->delete();
         }
-        else if ($request['type'] == 'product') {
+        else if ($request->type == 'product') {
             $product = Product::findOrFail($request->product_id);
             $order = Order::create([
                 'total_price' => $product->price * $request->quantity,

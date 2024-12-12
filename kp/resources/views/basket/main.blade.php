@@ -48,9 +48,13 @@
                         <p class="text-gray-800 text-lg font-bold">{{ number_format($total_price, 2) }} ₽</p>
                     </div>
                     <div class="mt-4 text-right">
-                        <a href="{{ route('order.store') }}" class="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600">
-                            Оформить заказ
-                        </a>
+                        @if (count($items) > 0)
+                            <form action="{{ route('order.store') }}" method="POST" class="inline-block">
+                                @csrf
+                                <input name="type" type="text" value="basket" class="hidden">
+                                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Оформить заказ</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @else
