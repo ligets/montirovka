@@ -21,14 +21,24 @@
 
 <div class="products-section py-10">
     <h2 class="text-center text-3xl font-semibold">Рекомендуемые товары</h2>
-    <div class="grid grid-cols-4 gap-6 container mx-auto mt-6">
+    <div class="grid grid-cols-4 gap-4 container mx-auto mt-6">
         @foreach($products as $product)
-            <div class="product-card bg-white p-4 rounded shadow">
-                <img src="{{ $product->image }}" alt="{{ $product->name }}" class="h-32 mx-auto">
-                <h3 class="text-lg mt-4">{{ $product->name }}</h3>
-                <p class="text-green-500 font-bold">{{ $product->price }} ₽</p>
-                <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary mt-2">Подробнее</a>
-            </div>
+            <a href="{{ route('products.id', ['id' => $product->id]) }}" class="w-[350px] mx-auto bg-white border border-gray-200 rounded-lg shadow-md flex flex-col overflow-hidden">
+                <img class="w-auto h-48 object-cover" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">{{ $product->title }}</h3>
+                    <p class="mt-2 text-sm text-gray-600">{{ $product->description }}</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-gray-900">₽{{ number_format($product->price, 2) }}</span>
+                        <form action="{{ route('basket.create', $product->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            <button type="submit" class="!bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                                В корзину
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </a>
         @endforeach
     </div>
 </div>

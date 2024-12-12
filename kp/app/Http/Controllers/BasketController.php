@@ -11,7 +11,10 @@ class BasketController extends Controller
     public function index() {
         $items = Basket::where('user_id', auth()->id())
             ->with("product")->get();
-        return view("basket.main", compact('items'));
+        $total_price = $items->sum(function ($item) {
+            return $item->product->price * $item->quantity; // Цена умножается на количество
+        });
+        return view("basket.main", compact(['items', 'total_price']));
     }
 
     public function create(int $product_id) {

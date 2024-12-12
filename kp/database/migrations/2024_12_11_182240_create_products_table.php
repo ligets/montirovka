@@ -26,6 +26,7 @@ return new class extends Migration
             $table->float('price');
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string("img_path");
             $table->timestamps();
         });
     }
