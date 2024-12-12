@@ -5,7 +5,7 @@
         <div class="flex flex-col md:flex-row gap-8">
             <!-- Изображение товара -->
             <div class="md:w-1/3">
-                <img src="{{ $product->image_url ?? asset('images/placeholder.png') }}" alt="{{ $product->title }}" class="w-full rounded-lg shadow-md">
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" class="w-full rounded-lg shadow-md">
             </div>
 
             <!-- Информация о товаре -->
